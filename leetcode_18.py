@@ -29,8 +29,9 @@ class Solution:
         			while q4_control <= len(s_arr) - 1:
         				sum_temp += s_arr[q4_control]
         				if sum_temp == s_target:
-        					temp_arr = [s_arr[q1_control], s_arr[q2_control], s_arr[q3_control], s_arr[q4_control]]
-        					result_arr.append(temp_arr)
+        					temp_arr = sorted([s_arr[q1_control], s_arr[q2_control], s_arr[q3_control], s_arr[q4_control]])
+        					if temp_arr not in result_arr:
+        						result_arr.append(temp_arr)
         				sum_temp -= s_arr[q4_control]
         				q4_control += 1
         			sum_temp -= s_arr[q3_control]
@@ -39,13 +40,5 @@ class Solution:
         		q2_control += 1
         	sum_temp -= s_arr[q1_control]
         	q1_control += 1
-        for n in range(0, len(result_arr)):
-        	result_arr[n] = sorted(result_arr[n])
-        filt = 0
-        output_arr = []
-        while filt <= len(result_arr) - 1:
-        	if result_arr[filt] not in output_arr:
-        		output_arr.append(result_arr[filt])
-        	filt += 1
-        return output_arr
+        return result_arr
 
