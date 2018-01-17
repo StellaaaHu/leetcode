@@ -9,30 +9,20 @@ class Solution:
         :type s: str
         :rtype: int
         """
-        root_str = s
-        root_str_list = list(root_str)
-        sub_str = temp = ''
-        if len(root_str_list) >= 2:
-            sub_str = root_str_list[0]
-            n = 0
-            while n < len(root_str_list) - 1:
-                if root_str_list[n + 1] not in sub_str:
-                    sub_str += root_str_list[n + 1]
-                else:
-                    if len(sub_str) > len(temp):
-                        temp = sub_str
-                        split = sub_str.find(root_str_list[n + 1])
-                        sub_str = sub_str[(split + 1):]
-                        sub_str += root_str_list[n + 1]
-                    else:
-                        split = sub_str.find(root_str_list[n + 1])
-                        sub_str = sub_str[(split + 1):]
-                        sub_str += root_str_list[n + 1]
-
-                n += 1
-            if len(sub_str) > len(temp):
-                temp = sub_str
-        elif len(root_str_list) == 1:
-            temp = root_str_list[0]
+        root_str_list = list(s)
+        sub_str = temp = root_str_list[0] if len(root_str_list) > 0 else root_str_list
+        n = 1
+        while n < len(root_str_list):
+            if root_str_list[n] not in sub_str:
+                sub_str += root_str_list[n]
+            else:
+                if len(sub_str) > len(temp):
+                    temp = sub_str
+                split = sub_str.find(root_str_list[n])
+                sub_str = sub_str[(split + 1):]
+                sub_str += root_str_list[n]
+            n += 1
+        if len(sub_str) > len(temp):
+            temp = sub_str
         
         return len(temp)
