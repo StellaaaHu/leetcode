@@ -9,6 +9,7 @@ class Solution:
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        k = k % len(nums)
         right_arr = nums[-k:]
-        left_arr = nums[0:len(nums) - k]
+        left_arr = nums[:len(nums) - k]
         nums = right_arr + left_arr
