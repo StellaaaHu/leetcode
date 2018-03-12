@@ -16,7 +16,7 @@ class Solution:
         	result = 1
         else:
         	while n < len(nums):
-        		if nums[n] <= 0:
+        		if nums[n] <= 0:j
         			del nums[n]
         			n -= 1
         		else:
